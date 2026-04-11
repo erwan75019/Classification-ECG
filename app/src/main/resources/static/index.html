@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Classification ECG</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="card">
+        <h1>Classification de signaux ECG</h1>
+        <p class="subtitle">
+            Analyse automatique d’un signal ECG avec des modèles de deep learning
+        </p>
+
+        <label for="model">Choisir un modèle :</label>
+        <select id="model">
+            <option value="mlp">MLP</option>
+            <option value="cnn">CNN</option>
+            <option value="lstm">LSTM</option>
+        </select>
+
+        <label for="signal">Signal ECG (96 valeurs séparées par des virgules) :</label>
+        <textarea id="signal" rows="5" placeholder="0.1, -0.2, 0.3, ..."></textarea>
+
+        <label for="fileInput">Importer un fichier (.csv ou .tsv) :</label>
+        <input type="file" id="fileInput" accept=".csv,.tsv">
+
+        <div class="actions">
+            <button onclick="predict()">Lancer la classification</button>
+            <button class="secondary-btn" onclick="predictBatch()">Analyser le fichier importé</button>
+        </div>
+
+        <div id="result" class="result"></div>
+
+        <div id="batchContainer" class="batch-container hidden">
+            <h2>Résultats du fichier importé</h2>
+            <div id="batchInfo" class="batch-info"></div>
+            <div id="batchResults"></div>
+        </div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

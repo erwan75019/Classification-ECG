@@ -1,0 +1,20 @@
+services:
+  app:
+    build: ./app
+    container_name: ecg-classification-app-copie
+    ports:
+      - "8081:8080"
+    depends_on:
+      - ecg-inference-service
+    networks:
+      - ecg-network
+
+  ecg-inference-service:
+    build: ./ecg-inference-service
+    container_name: ecg-inference-service-copie
+    networks:
+      - ecg-network
+
+networks:
+  ecg-network:
+    driver: bridge
