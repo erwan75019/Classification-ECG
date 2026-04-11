@@ -1,22 +1,33 @@
-# Lancer le projet
+# 🫀 ECG Classification Platform
 
+## 🚀 Lancer le projet
+
+```bash
 docker compose up --build
+```
 
-# Ouvrir la page pour tester les modèles
+---
 
-http://localhost:8081
+## 🌐 Accéder à l'application
 
-# Tester les modèles
+Ouvrir dans votre navigateur :
+
+👉 http://localhost:8081
+
+---
+
+## 🧪 Tester les modèles
 
 Deux possibilités :
 
-1) Saisie manuelle
+### 1️⃣ Saisie manuelle
 
-- Entrer 96 valeurs séparées par des virgules
-- Cliquer sur "Lancer la classification"
+* Entrer **96 valeurs** séparées par des virgules
+* Cliquer sur **"Lancer la classification"**
 
-Exemple :
+#### Exemple :
 
+```
 0.12,0.15,0.14,0.13,0.16,0.18,0.20,0.22,0.25,0.28,0.30,0.27,
 0.24,0.20,0.18,0.15,0.12,0.10,0.08,0.06,0.05,0.04,0.03,0.02,
 0.01,0.00,-0.01,-0.02,-0.03,-0.04,-0.05,-0.06,-0.05,-0.04,-0.03,-0.02,
@@ -25,23 +36,46 @@ Exemple :
 -0.03,-0.02,-0.01,0.00,0.02,0.04,0.06,0.08,0.10,0.12,0.14,0.16,
 0.18,0.20,0.22,0.24,0.26,0.28,0.30,0.28,0.26,0.24,0.22,0.20,
 0.18,0.16,0.14,0.12,0.10,0.08,0.06,0.05,0.04,0.03,0.02,0.01
+```
 
-2) Import de fichier
+---
 
-- Importer un fichier .csv ou .tsv
-- Cliquer sur "Analyser le fichier importé"
+### 2️⃣ Import de fichier
 
-# Fonctionnalités
+* Importer un fichier **.csv** ou **.tsv**
+* Cliquer sur **"Analyser le fichier importé"**
 
-- Choix du modèle (MLP, CNN, LSTM)
-- Analyse d’un signal ECG (96 valeurs)
-- Prédiction (Normal / Infarctus)
-- Score de confiance
-- Analyse d’un fichier complet
+---
 
-# Architecture
+## ⚙️ Fonctionnalités
 
-- Backend : Spring Boot
-- Service IA : Python (TensorFlow / Keras)
-- Communication : API REST
-- Déploiement : Docker Compose
+* 🔹 Choix du modèle : **MLP / CNN / LSTM**
+* 🔹 Analyse d’un signal ECG (96 points)
+* 🔹 Prédiction : **Normal vs Infarctus**
+* 🔹 Score de confiance
+* 🔹 Analyse batch via fichier
+* 🔹 Interface web moderne
+
+---
+
+## 🐳 Architecture
+
+* Backend : **Spring Boot**
+* Service IA : **Python (TensorFlow / Keras)**
+* Communication : **API REST**
+* Déploiement : **Docker Compose**
+
+---
+
+## 📌 Remarque
+
+Le modèle retourne :
+
+* une **classe prédite**
+* une **probabilité (confiance)** associée
+
+---
+
+## 👨‍💻 Auteur
+
+Erwan Vangu
