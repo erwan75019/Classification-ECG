@@ -3,7 +3,9 @@
 ## 🚀 Lancer le projet
 
 ```bash
-docker compose up --build
+chmod +x go.sh
+./go.sh 
+
 ```
 
 ---
