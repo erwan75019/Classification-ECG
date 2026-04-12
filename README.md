@@ -1,83 +1,104 @@
 # 🫀 ECG Classification Platform
 
+Application web permettant de classifier des signaux ECG en **Normal** ou **Infarctus** à l’aide de modèles de Deep Learning (MLP, CNN, LSTM), déployés via une architecture conteneurisée avec Docker.
+
+---
+
 ## 🚀 Lancer le projet
 
-```bash
+### Sous Linux / macOS
+
 chmod +x go.sh
-./go.sh 
+./go.sh
 
-```
+### Alternative
 
----
-
-## 🌐 Accéder à l'application
-
-Ouvrir dans votre navigateur :
-
-👉 http://localhost:8081
+docker compose up --build
 
 ---
 
-## 🧪 Tester les modèles
+## 🌐 Accès
 
-Deux possibilités :
-
-### 1️⃣ Saisie manuelle
-
-* Entrer **96 valeurs** séparées par des virgules
-* Cliquer sur **"Lancer la classification"**
-
-#### Exemple :
-
-```
-0.12,0.15,0.14,0.13,0.16,0.18,0.20,0.22,0.25,0.28,0.30,0.27,
-0.24,0.20,0.18,0.15,0.12,0.10,0.08,0.06,0.05,0.04,0.03,0.02,
-0.01,0.00,-0.01,-0.02,-0.03,-0.04,-0.05,-0.06,-0.05,-0.04,-0.03,-0.02,
-0.00,0.02,0.05,0.10,0.18,0.30,0.45,0.60,0.75,0.90,1.00,0.85,
-0.70,0.50,0.30,0.15,0.08,0.05,0.03,0.02,0.01,0.00,-0.01,-0.02,
--0.03,-0.02,-0.01,0.00,0.02,0.04,0.06,0.08,0.10,0.12,0.14,0.16,
-0.18,0.20,0.22,0.24,0.26,0.28,0.30,0.28,0.26,0.24,0.22,0.20,
-0.18,0.16,0.14,0.12,0.10,0.08,0.06,0.05,0.04,0.03,0.02,0.01
-```
+http://localhost:8081
 
 ---
 
-### 2️⃣ Import de fichier
+## ✨ Fonctionnalités
 
-* Importer un fichier **.csv** ou **.tsv**
-* Cliquer sur **"Analyser le fichier importé"**
-
----
-
-## ⚙️ Fonctionnalités
-
-* 🔹 Choix du modèle : **MLP / CNN / LSTM**
-* 🔹 Analyse d’un signal ECG (96 points)
-* 🔹 Prédiction : **Normal vs Infarctus**
-* 🔹 Score de confiance
-* 🔹 Analyse batch via fichier
-* 🔹 Interface web moderne
+* Sélection du modèle : MLP / CNN / LSTM
+* Classification d’un signal ECG (96 points)
+* Prédiction : Normal vs Infarctus
+* Score de confiance associé
+* Visualisation du signal ECG
+* Import de fichiers .csv / .tsv pour analyse batch
+* Interface web moderne
 
 ---
 
-## 🐳 Architecture
+## 🧪 Utilisation
 
-* Backend : **Spring Boot**
-* Service IA : **Python (TensorFlow / Keras)**
-* Communication : **API REST**
-* Déploiement : **Docker Compose**
+### Saisie manuelle
+
+Entrer 96 valeurs séparées par des virgules, puis lancer la classification.
+
+### Import de fichier
+
+Importer un fichier .csv ou .tsv, puis analyser les données.
 
 ---
 
-## 📌 Remarque
+## 🏗️ Architecture
 
-Le modèle retourne :
+* Backend : Spring Boot
+* Service IA : Python (TensorFlow / Keras)
+* Communication : API REST
+* Orchestration : Docker Compose
 
-* une **classe prédite**
-* une **probabilité (confiance)** associée
+Architecture en microservices :
+
+* 1 conteneur Java (interface + API)
+* 1 conteneur Python (inférence des modèles)
+
+---
+
+## 🧠 Modèles utilisés
+
+* MLP (Multi-Layer Perceptron)
+* CNN 1D
+* LSTM
+
+Comparaison des modèles réalisée sur le dataset ECG200.
+
+---
+
+## 🐳 Déploiement
+
+Projet entièrement conteneurisé :
+
+* reproductible
+* portable
+* lancement en une commande
+
+---
+
+## 📌 Résultat
+
+Le système retourne :
+
+* une classe prédite (Normal / Infarctus)
+* une probabilité associée
+
+---
+
+## 🛠️ Stack technique
+
+* Java (Spring Boot)
+* Python (TensorFlow, Keras, scikit-learn)
+* Docker / Docker Compose
+* HTML / CSS / JavaScript
 
 ---
 
 ## 👨‍💻 Auteur
 
-Erwan Vangu
+Projet réalisé dans le cadre d’un projet Deep Learning.
