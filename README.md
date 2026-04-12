@@ -101,4 +101,4 @@ Le système retourne :
 
 ## 👨‍💻 Auteur
 
-Projet réalisé dans le cadre d’un projet Deep Learning.
+Erwan Vangu
