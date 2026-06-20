@@ -373,7 +373,7 @@ async function compareModels() {
 
         return `
             <tr class="${isBest ? "best-model" : ""}">
-                <td>${isBest ? "🥇 " : ""}${result.modelUsed.toUpperCase()}</td>
+                <td>${isBest ? " " : ""}${result.modelUsed.toUpperCase()}</td>
                 <td>${result.error ? result.error : label}</td>
                 <td>${probability}%</td>
             </tr>
