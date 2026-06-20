@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>ECG AI Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="header">
+        <div>
+            <h1>ECG AI Platform</h1>
+            <p class="subtitle">Classification automatique de signaux ECG par deep learning</p>
+        </div>
+        <div class="header-badge">Medical AI Demo</div>
+    </div>
+
+    <div class="card">
+        <div class="form-grid">
+            <div>
+                <label for="model">Modèle utilisé</label>
+                <select id="model">
+                    <option value="mlp">MLP</option>
+                    <option value="cnn">CNN</option>
+                    <option value="lstm">LSTM</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="fileInput">Importer un fichier ECG</label>
+                <input type="file" id="fileInput" accept=".csv,.tsv">
+            </div>
+        </div>
+
+        <label for="signal">Signal ECG — 96 valeurs séparées par des virgules</label>
+        <textarea id="signal" rows="5" placeholder="0.1, -0.2, 0.3, ..."></textarea>
+
+        <div class="actions">
+            <button onclick="predict()">Lancer la classification</button>
+            <button class="secondary-btn" onclick="predictBatch()">Analyser le fichier importé</button>
+            <button class="compare-btn" onclick="compareModels()">Comparer MLP / CNN / LSTM</button>
+        </div>
+        
+        <div id="comparisonContainer" class="comparison-container hidden">
+            <h2>Comparaison des modèles</h2>
+            <div id="comparisonResults"></div>
+        </div>
+
+        <div id="result" class="result"></div>
+
+        <div id="medicalDashboard" class="medical-dashboard hidden">
+            <div class="risk-card">
+                <h2>Analyse clinique</h2>
+
+                <div id="riskGauge" class="risk-gauge">
+                    <span id="riskValue">0%</span>
+                </div>
+
+                <p id="riskLabel"></p>
+                <p id="confidenceLabel" class="confidence-label"></p>
+                <p id="diagnosisText" class="diagnosis-text"></p>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h2>Signal ECG analysé</h2>
+                    <div class="chart-stats">
+                        <span id="modelBadge" class="model-badge">MODEL</span>
+                        <span id="pointsBadge" class="points-badge">96 points</span>
+                    </div>
+                </div>
+
+                <canvas id="ecgChart"></canvas>
+            </div>
+        </div>
+
+        <div id="batchContainer" class="batch-container hidden">
+            <h2>Résultats du fichier importé</h2>
+            <div id="batchInfo" class="batch-info"></div>
+            <div id="batchResults"></div>
+        </div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

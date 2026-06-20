@@ -1,17 +1,19 @@
 services:
-  app:
-    build: ./app
-    container_name: ecg-classification-app-copie
+  backend-java:
+    build: ./backend-java
+    container_name: ecg-backend-java
     ports:
       - "8081:8080"
     depends_on:
-      - ecg-inference-service
+      - inference-service
     networks:
       - ecg-network
 
-  ecg-inference-service:
-    build: ./ecg-inference-service
-    container_name: ecg-inference-service-copie
+  inference-service:
+    build: ./inference-service
+    container_name: ecg-inference-service
+    ports:
+      - "5001:5000"
     networks:
       - ecg-network
 
