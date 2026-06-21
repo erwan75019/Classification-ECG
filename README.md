@@ -1,4 +1,4 @@
-# 🫀 ECG Classification Platform
+#  ECG Classification Platform
 
 ![Application ECG](docs/aperçu.png)
 
@@ -11,7 +11,7 @@ Le projet repose sur une architecture microservices conteneurisée combinant une
 
 ---
 
-# 📸 Aperçu de l'application
+#  Aperçu de l'application
 
 ## Détection d'un signal ECG normal
 
@@ -29,7 +29,7 @@ Le système détecte ici un infarctus probable avec une forte confiance et met a
 
 ---
 
-# 🚀 Lancer le projet
+#  Lancer le projet
 
 ## Prérequis
 
@@ -58,7 +58,7 @@ docker compose up --build
 
 ---
 
-# 🌐 Accès à l'application
+#  Accès à l'application
 
 Une fois les conteneurs démarrés :
 
@@ -67,7 +67,7 @@ http://localhost:8081
 
 ---
 
-# ✨ Fonctionnalités
+#  Fonctionnalités
 
 ## Classification individuelle
 
@@ -146,7 +146,7 @@ Le meilleur score est automatiquement mis en évidence.
 ---
 
 
-# 🧠 Modèles utilisés
+#  Modèles utilisés
 
 ## MLP
 
@@ -182,7 +182,7 @@ Réseau récurrent capable de modéliser les dépendances temporelles.
 
 ---
 
-# 📊 Jeu de données
+#  Jeu de données
 
 Dataset utilisé :
 
@@ -205,7 +205,7 @@ Répartition :
 ---
 
 
-# 🐳 Déploiement Docker
+#  Déploiement Docker
 
 Le projet est entièrement conteneurisé.
 
@@ -232,7 +232,7 @@ docker compose up --build
 
 ---
 
-# 📌 Résultats retournés
+#  Résultats retournés
 
 Pour chaque signal ECG :
 
@@ -245,7 +245,7 @@ Pour chaque signal ECG :
 
 ---
 
-# 🛠️ Stack technique
+#  Stack technique
 
 ## Backend
 
@@ -275,7 +275,7 @@ Pour chaque signal ECG :
 
 ---
 
-# 🎯 Objectifs du projet
+#  Objectifs du projet
 
 - Développer une plateforme médicale basée sur l'IA
 - Comparer plusieurs architectures de Deep Learning
@@ -285,7 +285,7 @@ Pour chaque signal ECG :
 
 ---
 
-# 👨‍💻 Auteur
+#  Auteur
 
 **Erwan Vangu**
 
