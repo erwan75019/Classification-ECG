@@ -1,12 +1,44 @@
 # 🫀 ECG Classification Platform
 
+![Application ECG](docs/ecg-infarctus.png)
+
 Application web de classification de signaux électrocardiographiques (ECG) permettant de détecter la présence potentielle d’un infarctus du myocarde à l’aide de modèles de Deep Learning.
 
 Le projet repose sur une architecture microservices conteneurisée combinant une application Java Spring Boot et un service d’inférence Python utilisant TensorFlow/Keras.
 
 ---
 
+# 📸 Aperçu de l'application
+
+## Détection d'un signal ECG normal
+
+![Signal normal](docs/ecg-normal.png)
+
+Le modèle identifie ici un signal ECG normal et affiche son analyse clinique ainsi que sa représentation graphique.
+
+---
+
+## Détection d'un infarctus probable
+
+![Infarctus probable](docs/ecg-infarctus.png)
+
+Le système détecte ici un infarctus probable avec une forte confiance et met automatiquement à jour le niveau de risque clinique.
+
+---
+
 # 🚀 Lancer le projet
+
+## Prérequis
+
+- Docker
+- Docker Compose
+
+Vérification :
+
+
+docker --version
+docker compose version
+
 
 ## Linux / macOS
 
@@ -19,6 +51,7 @@ chmod +x go.sh
 
 
 docker compose up --build
+
 
 ---
 
@@ -35,22 +68,20 @@ http://localhost:8081
 
 ## Classification individuelle
 
-* Sélection du modèle de Deep Learning :
+- Sélection du modèle de Deep Learning :
+  - MLP
+  - CNN 1D
+  - LSTM
 
-  * MLP
-  * CNN 1D
-  * LSTM
+- Saisie manuelle d'un signal ECG de 96 points
 
-* Saisie manuelle d'un signal ECG de 96 points
+- Classification automatique :
+  - Signal normal
+  - Infarctus probable
 
-* Classification automatique :
+- Affichage du score de confiance
 
-  * Signal normal
-  * Infarctus probable
-
-* Affichage du score de confiance
-
-* Affichage du modèle utilisé
+- Affichage du modèle utilisé
 
 ---
 
@@ -58,15 +89,15 @@ http://localhost:8081
 
 Après chaque prédiction :
 
-* Jauge de risque clinique
-* Niveau de risque :
+- Jauge de risque clinique
+- Niveau de risque :
+  - Faible
+  - Intermédiaire
+  - Élevé
 
-  * Faible
-  * Intermédiaire
-  * Élevé
-* Diagnostic textuel automatique
-* Indication de la confiance du modèle
-* Nombre de points ECG analysés
+- Diagnostic textuel automatique
+- Indication de la confiance du modèle
+- Nombre de points ECG analysés
 
 ---
 
@@ -74,26 +105,26 @@ Après chaque prédiction :
 
 L'application génère automatiquement :
 
-* Courbe ECG interactive
-* Visualisation des 96 points du signal
-* Affichage du modèle utilisé
-* Interface responsive moderne
+- Courbe ECG interactive
+- Visualisation des 96 points du signal
+- Affichage du modèle utilisé
+- Interface responsive moderne
 
 ---
 
 ## Analyse de fichiers
 
-Import de fichiers :
+Formats supportés :
 
-* `.csv`
-* `.tsv`
+- `.csv`
+- `.tsv`
 
 Fonctionnalités :
 
-* Détection automatique des signaux valides
-* Analyse batch de plusieurs ECG
-* Affichage des résultats ligne par ligne
-* Sélection d'un signal depuis le tableau pour réanalyse individuelle
+- Détection automatique des signaux valides
+- Analyse batch de plusieurs ECG
+- Affichage des résultats ligne par ligne
+- Sélection d'un signal depuis le tableau pour réanalyse individuelle
 
 ---
 
@@ -101,13 +132,11 @@ Fonctionnalités :
 
 L'application permet de comparer automatiquement les performances des trois architectures sur un même signal ECG.
 
-Résultats affichés :
-
-| Modèle | Classe prédite     | Probabilité |
-| ------ | ------------------ | ----------- |
-| MLP    | Normal / Infarctus | %           |
-| CNN    | Normal / Infarctus | %           |
-| LSTM   | Normal / Infarctus | %           |
+| Modèle | Classe prédite | Probabilité |
+|---------|---------|---------|
+| MLP | Normal / Infarctus | % |
+| CNN | Normal / Infarctus | % |
+| LSTM | Normal / Infarctus | % |
 
 Le meilleur score est automatiquement mis en évidence.
 
@@ -115,51 +144,50 @@ Le meilleur score est automatiquement mis en évidence.
 
 # 🏗️ Architecture du projet
 
-## Backend
+## Structure générale
 
-* Java 17
-* Spring Boot
-* API REST
 
-Responsabilités :
+.
+├── app/
+│   ├── Dockerfile
+│   ├── pom.xml
+│   └── src/
+│
+├── inference-service/
+│   ├── Dockerfile
+│   ├── models/
+│   ├── artifacts/
+│   └── app/
+│
+├── docs/
+│   ├── ecg-normal.png
+│   └── ecg-infarctus.png
+│
+├── docker-compose.yml
+├── go.sh
+└── README.md
 
-* Interface utilisateur
-* Gestion des requêtes
-* Communication avec le service IA
-
----
-
-## Service d'inférence
-
-* Python 3
-* TensorFlow
-* Keras
-* NumPy
-* Scikit-Learn
-
-Responsabilités :
-
-* Chargement des modèles
-* Prétraitement des données
-* Classification des signaux ECG
 
 ---
 
-## Communication
+## Architecture microservices
 
 
 Navigateur
       │
       ▼
-Spring Boot (8080)
-      │
- REST API
-      │
-      ▼
-Python Inference Service (5000)
-      │
-      ▼
-Modèles Deep Learning
+┌────────────────────┐
+│ Spring Boot (8080) │
+└─────────┬──────────┘
+          │ REST API
+          ▼
+┌────────────────────┐
+│ Python Flask (5000)│
+└─────────┬──────────┘
+          ▼
+┌────────────────────┐
+│ CNN / MLP / LSTM   │
+└────────────────────┘
 
 
 ---
@@ -172,9 +200,9 @@ Multi-Layer Perceptron utilisant plusieurs couches entièrement connectées.
 
 ### Avantages
 
-* Rapide à entraîner
-* Faible complexité
-* Très bonnes performances sur ECG200
+- Rapide à entraîner
+- Faible complexité
+- Très bonnes performances sur ECG200
 
 ---
 
@@ -184,8 +212,8 @@ Réseau de neurones convolutif spécialisé pour les séries temporelles.
 
 ### Avantages
 
-* Extraction automatique de motifs locaux
-* Détection efficace des formes ECG caractéristiques
+- Extraction automatique de motifs locaux
+- Détection efficace des formes ECG caractéristiques
 
 ---
 
@@ -195,8 +223,8 @@ Réseau récurrent capable de modéliser les dépendances temporelles.
 
 ### Avantages
 
-* Prise en compte de la dynamique temporelle du signal
-* Adapté aux données séquentielles
+- Prise en compte de la dynamique temporelle du signal
+- Adapté aux données séquentielles
 
 ---
 
@@ -208,12 +236,31 @@ Dataset utilisé :
 
 Caractéristiques :
 
-* Classification binaire
-* 96 points par signal
-* Classes :
+- Classification binaire
+- 96 points par signal
+- 200 signaux ECG
+- Classes :
+  - Normal
+  - Infarctus
 
-  * Normal
-  * Infarctus
+Répartition :
+
+- 100 échantillons d'entraînement
+- 100 échantillons de test
+
+---
+
+# 📈 Résultats expérimentaux
+
+Les modèles ont été entraînés et évalués sur le dataset ECG200.
+
+| Modèle | Accuracy | F1-score |
+|---------|---------|---------|
+| MLP | 0.80 | 0.82 |
+| CNN | 0.66 | 0.72 |
+| LSTM | À compléter | À compléter |
+
+Le MLP a obtenu les meilleures performances globales sur ce dataset.
 
 ---
 
@@ -221,21 +268,22 @@ Caractéristiques :
 
 Le projet est entièrement conteneurisé.
 
-Conteneurs :
+## Application Java
 
-### Application Java
+- Java 17
+- Spring Boot
+- Interface utilisateur
+- API REST
 
-* Spring Boot
-* Interface utilisateur
-* API REST
+## Service IA Python
 
-### Service IA Python
+- Python 3
+- TensorFlow
+- Keras
+- NumPy
+- Scikit-Learn
 
-* TensorFlow
-* Chargement des modèles
-* Inférence
-
-Lancement :
+## Lancement
 
 
 docker compose up --build
@@ -247,12 +295,12 @@ docker compose up --build
 
 Pour chaque signal ECG :
 
-* Classe prédite
-* Probabilité associée
-* Niveau de risque
-* Diagnostic textuel
-* Visualisation du signal
-* Comparaison éventuelle entre modèles
+- Classe prédite
+- Probabilité associée
+- Niveau de risque
+- Diagnostic textuel
+- Visualisation du signal
+- Comparaison éventuelle entre modèles
 
 ---
 
@@ -260,29 +308,39 @@ Pour chaque signal ECG :
 
 ## Backend
 
-* Java 17
-* Spring Boot
-* Maven
+- Java 17
+- Spring Boot
+- Maven
 
 ## Intelligence Artificielle
 
-* Python
-* TensorFlow
-* Keras
-* NumPy
-* Scikit-Learn
+- Python 3
+- TensorFlow
+- Keras
+- NumPy
+- Scikit-Learn
 
 ## Frontend
 
-* HTML5
-* CSS3
-* JavaScript
-* Chart.js
+- HTML5
+- CSS3
+- JavaScript
+- Chart.js
 
 ## Déploiement
 
-* Docker
-* Docker Compose
+- Docker
+- Docker Compose
+
+---
+
+# 🎯 Objectifs du projet
+
+- Développer une plateforme médicale basée sur l'IA
+- Comparer plusieurs architectures de Deep Learning
+- Déployer une architecture microservices conteneurisée
+- Fournir une interface utilisateur intuitive pour l'analyse ECG
+- Illustrer l'intégration entre Java Spring Boot et Python TensorFlow
 
 ---
 
@@ -290,6 +348,9 @@ Pour chaque signal ECG :
 
 **Erwan Vangu**
 
-ENSISA – Informatique et Réseaux
+Étudiant ingénieur en Informatique, Data Science et Intelligence Artificielle
+
+**ENSISA – École Nationale Supérieure d’Ingénieurs Sud Alsace**
+
 
 Projet de classification ECG basé sur des techniques de Deep Learning et une architecture microservices conteneurisée.
