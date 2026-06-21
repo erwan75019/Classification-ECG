@@ -1,7 +1,7 @@
 # 🫀 ECG Classification Platform
 
-![Application ECG](docs/ecg-infarctus.png)
-
+![Application ECG](docs/aperçu.png)
+![Application ECG](docs/aperçu2.png)
 Application web de classification de signaux électrocardiographiques (ECG) permettant de détecter la présence potentielle d’un infarctus du myocarde à l’aide de modèles de Deep Learning.
 
 Le projet repose sur une architecture microservices conteneurisée combinant une application Java Spring Boot et un service d’inférence Python utilisant TensorFlow/Keras.
