@@ -1,4 +1,4 @@
-#  ECG Classification Platform
+#  ECG AI Platform
 
 ![Application ECG](docs/aperçu.png)
 
