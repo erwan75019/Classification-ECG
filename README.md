@@ -1,7 +1,10 @@
 # 🫀 ECG Classification Platform
 
 ![Application ECG](docs/aperçu.png)
+
 ![Application ECG](docs/aperçu2.png)
+Choix de sélection des modèles 
+
 Application web de classification de signaux électrocardiographiques (ECG) permettant de détecter la présence potentielle d’un infarctus du myocarde à l’aide de modèles de Deep Learning.
 
 Le projet repose sur une architecture microservices conteneurisée combinant une application Java Spring Boot et un service d’inférence Python utilisant TensorFlow/Keras.
@@ -142,55 +145,6 @@ Le meilleur score est automatiquement mis en évidence.
 
 ---
 
-# 🏗️ Architecture du projet
-
-## Structure générale
-
-
-.
-├── app/
-│   ├── Dockerfile
-│   ├── pom.xml
-│   └── src/
-│
-├── inference-service/
-│   ├── Dockerfile
-│   ├── models/
-│   ├── artifacts/
-│   └── app/
-│
-├── docs/
-│   ├── ecg-normal.png
-│   └── ecg-infarctus.png
-│
-├── docker-compose.yml
-├── go.sh
-└── README.md
-
-
----
-
-## Architecture microservices
-
-
-Navigateur
-      │
-      ▼
-┌────────────────────┐
-│ Spring Boot (8080) │
-└─────────┬──────────┘
-          │ REST API
-          ▼
-┌────────────────────┐
-│ Python Flask (5000)│
-└─────────┬──────────┘
-          ▼
-┌────────────────────┐
-│ CNN / MLP / LSTM   │
-└────────────────────┘
-
-
----
 
 # 🧠 Modèles utilisés
 
@@ -250,19 +204,6 @@ Répartition :
 
 ---
 
-# 📈 Résultats expérimentaux
-
-Les modèles ont été entraînés et évalués sur le dataset ECG200.
-
-| Modèle | Accuracy | F1-score |
-|---------|---------|---------|
-| MLP | 0.80 | 0.82 |
-| CNN | 0.66 | 0.72 |
-| LSTM | À compléter | À compléter |
-
-Le MLP a obtenu les meilleures performances globales sur ce dataset.
-
----
 
 # 🐳 Déploiement Docker
 
