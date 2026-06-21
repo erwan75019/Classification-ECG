@@ -294,4 +294,3 @@ Pour chaque signal ECG :
 **ENSISA – École Nationale Supérieure d’Ingénieurs Sud Alsace**
 
 
-Projet de classification ECG basé sur des techniques de Deep Learning et une architecture microservices conteneurisée.
