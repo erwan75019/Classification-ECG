@@ -3,7 +3,7 @@
 ![Application ECG](docs/aperçu.png)
 
 ![Application ECG](docs/aperçu2.png)
-Choix de sélection des modèles 
+
 
 Application web de classification de signaux électrocardiographiques (ECG) permettant de détecter la présence potentielle d’un infarctus du myocarde à l’aide de modèles de Deep Learning.
 
